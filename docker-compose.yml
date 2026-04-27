@@ -39,6 +39,7 @@ services:
     build: 
       context: ./KafkaProducer
       dockerfile: Dockerfile
+    image: kafka-producer:latest
     ports:
       - "8080:8080"
     environment:
@@ -57,6 +58,7 @@ services:
     build:
       context: ./KafkaConsumer
       dockerfile: Dockerfile
+    image: kafka-consumer:latest
     ports:
       - "8000:8000"
     environment:
@@ -70,6 +72,7 @@ services:
     build:
       context: ./GammazonBackend
       dockerfile: Dockerfile
+    image: gammazon-backend:latest
     ports:
       - "8001:8001"
     environment:
@@ -83,6 +86,7 @@ services:
     build:
       context: ./Gammazon
       dockerfile: Dockerfile
+    image: gammazon-frontend:latest
     ports:
       - "3000:80"
     depends_on:

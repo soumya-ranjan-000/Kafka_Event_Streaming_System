@@ -4,6 +4,7 @@ import com.ecommerce.producer.model.OrderEvent;
 import com.ecommerce.producer.model.OrderRequest;
 import com.ecommerce.producer.model.OrderResponse;
 import com.ecommerce.producer.service.OrderService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,7 @@ public class OrderController {
 
     @PostMapping
     @Operation(summary = "Create a new order", description = "Publishes an order event to Kafka for processing")
-    public ResponseEntity<OrderResponse> createOrder(@RequestBody OrderRequest orderRequest) {
+    public ResponseEntity<OrderResponse> createOrder(@Valid @RequestBody OrderRequest orderRequest) {
         log.info("Received order request: {}", orderRequest);
         
         // Generate a unique order ID
